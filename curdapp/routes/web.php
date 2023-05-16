@@ -2,21 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/e', function () {
-    return view('employee');
-});
+Route::get('/view',[EmployeeController::class,'view']);
+
+//php artisan make:controller EmployeeController
+//php artisan make:model EmployeeModel
+//php artisan make:migration create_employee
+//php artisan migrate
+//php artisan make:factory EmployeeModelFactory
+//php artisan db:seed
