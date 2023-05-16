@@ -10,6 +10,7 @@ Route::get('/', function () {
 
 Route::get('/view',[EmployeeController::class,'view']);
 Route::post('/insert',[EmployeeController::class,'onInsert']);
+Route::get('/delete/{id}',[EmployeeController::class,'onDelete']);
 
 //php artisan make:controller EmployeeController
 //php artisan make:model EmployeeModel

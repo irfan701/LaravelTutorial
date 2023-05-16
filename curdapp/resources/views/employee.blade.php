@@ -309,8 +309,17 @@ $(document).ready(function(){
 						<td>{{$row->phone}}</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
+{{--							//<a href="#deleteEmployeeModal" id="{{$row->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--}}
+                            <a class="delete" href="{{url('/delete/'.$row->id)}}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+
+                        </td>
+
+
+
+
+
+
 					</tr>
                 @endforeach
 
@@ -334,7 +343,8 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
-<!-- Edit Modal HTML -->
+
+<!-- ADD Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -369,6 +379,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+
 <!-- Edit Modal HTML -->
 <div id="editEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
@@ -404,8 +415,11 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+
+
 <!-- Delete Modal HTML -->
-<div id="deleteEmployeeModal" class="modal fade">
+{{--<div id="deleteEmployeeModal-{{ $row->id }}" class="modal fade">--}}
+    <div class="modal fade" id="deleteEmployeeModal-{{ $row->id }}" tabIndex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
@@ -425,5 +439,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+
+
 </body>
 </html>

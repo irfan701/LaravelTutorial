@@ -31,4 +31,9 @@ class EmployeeController extends Controller
 
         return redirect()->back();
     }
+
+    function onDelete($id){
+        EmployeeModel::where('id',$id)->delete();
+        return redirect()->back();
+    }
 }
