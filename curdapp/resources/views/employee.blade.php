@@ -28,7 +28,7 @@ body {
 	min-width: 1000px;
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
-.table-title {        
+.table-title {
 	padding-bottom: 15px;
 	background: #435d7d;
 	color: #fff;
@@ -85,7 +85,7 @@ table.table th i {
 	font-size: 13px;
 	margin: 0 5px;
 	cursor: pointer;
-}	
+}
 table.table td:last-child i {
 	opacity: 0.9;
 	font-size: 22px;
@@ -133,11 +133,11 @@ table.table .avatar {
 }
 .pagination li a:hover {
 	color: #666;
-}	
+}
 .pagination li.active a, .pagination li.active a.page-link {
 	background: #03A9F4;
 }
-.pagination li.active a:hover {        
+.pagination li.active a:hover {
 	background: #0397d6;
 }
 .pagination li.disabled i {
@@ -151,12 +151,12 @@ table.table .avatar {
 	float: left;
 	margin-top: 10px;
 	font-size: 13px;
-}    
+}
 /* Custom checkbox */
 .custom-checkbox {
 	position: relative;
 }
-.custom-checkbox input[type="checkbox"] {    
+.custom-checkbox input[type="checkbox"] {
 	opacity: 0;
 	position: absolute;
 	margin: 5px 0 0 3px;
@@ -232,28 +232,28 @@ table.table .avatar {
 .modal .btn {
 	border-radius: 2px;
 	min-width: 100px;
-}	
+}
 .modal form label {
 	font-weight: normal;
-}	
+}
 </style>
 <script>
 $(document).ready(function(){
 	// Activate tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	
+
 	// Select/Deselect checkboxes
 	var checkbox = $('table tbody input[type="checkbox"]');
 	$("#selectAll").click(function(){
 		if(this.checked){
 			checkbox.each(function(){
-				this.checked = true;                        
+				this.checked = true;
 			});
 		} else{
 			checkbox.each(function(){
-				this.checked = false;                        
+				this.checked = false;
 			});
-		} 
+		}
 	});
 	checkbox.click(function(){
 		if(!this.checked){
@@ -274,7 +274,7 @@ $(document).ready(function(){
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
 					</div>
 				</div>
 			</div>
@@ -295,6 +295,7 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				<tbody>
+                @foreach($employee as $row)
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -302,106 +303,47 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-						<td>Thomas Hardy</td>
-						<td>thomashardy@mail.com</td>
-						<td>89 Chiaroscuro Rd, Portland, USA</td>
-						<td>(171) 555-2222</td>
+						<td>{{$row->name}}</td>
+						<td>{{$row->email}}</td>
+						<td>{{$row->address}}</td>
+						<td>{{$row->phone}}</td>
 						<td>
 							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox2" name="options[]" value="1">
-								<label for="checkbox2"></label>
-							</span>
-						</td>
-						<td>Dominique Perrier</td>
-						<td>dominiqueperrier@mail.com</td>
-						<td>Obere Str. 57, Berlin, Germany</td>
-						<td>(313) 555-5735</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox3" name="options[]" value="1">
-								<label for="checkbox3"></label>
-							</span>
-						</td>
-						<td>Maria Anders</td>
-						<td>mariaanders@mail.com</td>
-						<td>25, rue Lauriston, Paris, France</td>
-						<td>(503) 555-9931</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox4" name="options[]" value="1">
-								<label for="checkbox4"></label>
-							</span>
-						</td>
-						<td>Fran Wilson</td>
-						<td>franwilson@mail.com</td>
-						<td>C/ Araquil, 67, Madrid, Spain</td>
-						<td>(204) 619-5731</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>					
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox5" name="options[]" value="1">
-								<label for="checkbox5"></label>
-							</span>
-						</td>
-						<td>Martin Blank</td>
-						<td>martinblank@mail.com</td>
-						<td>Via Monte Bianco 34, Turin, Italy</td>
-						<td>(480) 631-2097</td>
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr> 
+                @endforeach
+
 				</tbody>
 			</table>
 			<div class="clearfix">
 				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Previous</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Next</a></li>
-				</ul>
+{{--				<ul class="pagination">--}}
+{{--					<li class="page-item disabled"><a href="#">Previous</a></li>--}}
+{{--					<li class="page-item"><a href="#" class="page-link">1</a></li>--}}
+{{--					<li class="page-item"><a href="#" class="page-link">2</a></li>--}}
+{{--					<li class="page-item active"><a href="#" class="page-link">3</a></li>--}}
+{{--					<li class="page-item"><a href="#" class="page-link">4</a></li>--}}
+{{--					<li class="page-item"><a href="#" class="page-link">5</a></li>--}}
+{{--					<li class="page-item"><a href="#" class="page-link">Next</a></li>--}}
+{{--				</ul>--}}
+
+
+                {!! $employee->appends(['sort' => 'votes'])->links() !!}
 			</div>
 		</div>
-	</div>        
+	</div>
 </div>
 <!-- Edit Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
-				<div class="modal-header">						
+				<div class="modal-header">
 					<h4 class="modal-title">Add Employee</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
 						<label>Name</label>
 						<input type="text" class="form-control" required>
@@ -417,7 +359,7 @@ $(document).ready(function(){
 					<div class="form-group">
 						<label>Phone</label>
 						<input type="text" class="form-control" required>
-					</div>					
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -432,11 +374,11 @@ $(document).ready(function(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
-				<div class="modal-header">						
+				<div class="modal-header">
 					<h4 class="modal-title">Edit Employee</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<div class="form-group">
 						<label>Name</label>
 						<input type="text" class="form-control" required>
@@ -452,7 +394,7 @@ $(document).ready(function(){
 					<div class="form-group">
 						<label>Phone</label>
 						<input type="text" class="form-control" required>
-					</div>					
+					</div>
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -467,11 +409,11 @@ $(document).ready(function(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form>
-				<div class="modal-header">						
+				<div class="modal-header">
 					<h4 class="modal-title">Delete Employee</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
-				<div class="modal-body">					
+				<div class="modal-body">
 					<p>Are you sure you want to delete these Records?</p>
 					<p class="text-warning"><small>This action cannot be undone.</small></p>
 				</div>
