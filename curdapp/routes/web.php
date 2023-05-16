@@ -9,6 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/view',[EmployeeController::class,'view']);
+Route::post('/insert',[EmployeeController::class,'onInsert']);
 
 //php artisan make:controller EmployeeController
 //php artisan make:model EmployeeModel
